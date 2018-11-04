@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+    <select id="selectRole" resultType="com.wzh.mybatis_base.h2.Role">
+        select * from Role where roleid = #{id}
+    </select>
+</mapper>

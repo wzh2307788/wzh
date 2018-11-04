@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+<properties>
+    <property name="driver" value="org.h2.Driver"></property>
+    <property name="url" value="jdbc:h2:~/test"></property>
+    <property name="username" value="sa"></property>
+    <property name="password" value="wzh123"></property>
+</properties>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${driver}"/>
+                <property name="url" value="${url}"/>
+               <property name="username" value="${username}"/>
+                <!--    <property name="password" value="${password}"/>-->
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mybatis/BlogMapper.xml"/>
+    </mappers>
+</configuration>

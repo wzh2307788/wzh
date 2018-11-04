@@ -1,0 +1,10 @@
+Logger:
+logging:
+  level:
+   ROOT: info
+   com.wzh.mybatis_base.mybatis: DEBUG
+
+mybatis:
+ driver: org.h2.Driver
+ url: xxx
+ username: sa
