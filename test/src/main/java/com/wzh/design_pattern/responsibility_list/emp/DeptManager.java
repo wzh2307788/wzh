@@ -8,26 +8,31 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-@Component
-public class DeptManager extends RequestHandler {
+public class DeptManager  extends RequestHandler{
+    boolean isContinue=true;
     Logger log = LoggerFactory.getLogger(DeptManager.class);
 
     @Override
-    public void handle(Request req) {
+    public boolean handle(Request req) {
 
         System.out.println(" get into the " + this.getClass().getName() + Thread.currentThread().getStackTrace()[1].getMethodName()+Thread.currentThread().getStackTrace()[1].getLineNumber());
         if (req instanceof FeeRequest) {
-            handle((FeeRequest) req);
+            return  handle((FeeRequest) req);
         } else if (req instanceof EntryRequest) {
-            handle((EntryRequest) req);
+            return   handle((EntryRequest) req);
         }
+
+        return false;
     }
 
-    public void handle(FeeRequest request) {
+    public boolean handle(FeeRequest request) {
         System.out.println(" get into the " + this.getClass().getName() + Thread.currentThread().getStackTrace()[1].getMethodName()+Thread.currentThread().getStackTrace()[1].getLineNumber());
+
+        return false;
     }
 
-    public void handle(EntryRequest request) {
+    public boolean handle(EntryRequest request) {
         System.out.println(" get into the " + this.getClass().getName() + Thread.currentThread().getStackTrace()[1].getMethodName()+Thread.currentThread().getStackTrace()[1].getLineNumber());
+        return false;
     }
 }

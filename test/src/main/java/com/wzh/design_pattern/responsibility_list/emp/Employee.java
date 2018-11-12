@@ -24,4 +24,20 @@ public class Employee {
     public void setRole(String role) {
         this.role = role;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+
+        if(!(obj instanceof Employee)){
+            return false;
+        }
+        if(obj.hashCode()!=this.hashCode()){
+            return false;
+        }
+
+      if(obj.getClass()!=Employee.class){
+         return false;
+        }
+    return super.equals(obj);
+}
 }

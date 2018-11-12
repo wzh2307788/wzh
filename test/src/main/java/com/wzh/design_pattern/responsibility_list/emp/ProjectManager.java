@@ -5,33 +5,34 @@ import com.wzh.design_pattern.responsibility_list.req.FeeRequest;
 import com.wzh.design_pattern.responsibility_list.req.Request;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 
 public class ProjectManager extends RequestHandler{
     boolean isContinue=true;
     Logger log = LoggerFactory.getLogger(DeptManager.class);
-    {
-       setNext(new DeptManager());
-    }
+
     @Override
-    public void handle(Request req) {
+    public boolean handle(Request req) {
 
         System.out.println(" get into the " + this.getClass().getName() + Thread.currentThread().getStackTrace()[1].getMethodName()+Thread.currentThread().getStackTrace()[1].getLineNumber());
         if (req instanceof FeeRequest) {
-            handle((FeeRequest) req);
+            return  handle((FeeRequest) req);
         } else if (req instanceof EntryRequest) {
-            handle((EntryRequest) req);
+          return   handle((EntryRequest) req);
         }
+
+        return false;
     }
 
-    public void handle(FeeRequest request) {
+    public boolean handle(FeeRequest request) {
         System.out.println(" get into the " + this.getClass().getName() + Thread.currentThread().getStackTrace()[1].getMethodName()+Thread.currentThread().getStackTrace()[1].getLineNumber());
-        boolean isContinue=true;
-        if(getNext()!=null&&isContinue){
-            getNext().handle(request);
-        }
+
+        return false;
     }
 
-    public void handle(EntryRequest request) {
+    public boolean handle(EntryRequest request) {
         System.out.println(" get into the " + this.getClass().getName() + Thread.currentThread().getStackTrace()[1].getMethodName()+Thread.currentThread().getStackTrace()[1].getLineNumber());
+        return false;
     }
 }
